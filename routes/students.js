@@ -24,4 +24,16 @@ router.post("/", async (req, res) => {
   }
 });
 
+//@route  GET /students
+//description Get all registered student details
+//@access Public
+router.get("/", async (req, res) => {
+  try {
+    const students = await Student.find();
+    res.json(students);
+  } catch (err) {
+    res.json({ msg: err });
+  }
+});
+
 module.exports = router;

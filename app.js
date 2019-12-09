@@ -3,6 +3,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 const cors = require("cors");
 const mongoose = require("mongoose");
+const path = require("path");
 
 //For securing environmental variables
 const dotenv = require("dotenv");
@@ -15,10 +16,11 @@ app.use(express.json({ extended: false }));
 const studentRoute = require("./routes/students");
 app.use("/students", studentRoute);
 
-app.get("/", (req, res) => {
-  res.send("Hello There");
-});
+app.use(express.static("client/build"));
 
+app.get("*", (req, res) => {
+  res.sendfile(path.resolve(__dirname, "client", "build", "index.html"));
+});
 //Port
 app.listen(PORT, () => console.log(`Server started at  ${PORT}`));
 

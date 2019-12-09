@@ -1,7 +1,9 @@
 import React, { Component, Fragment } from "react";
 import axios from "axios";
 import { Offline, Online, Detector } from "react-detect-offline";
+
 let isOnline = false;
+
 export default class Create extends Component {
   constructor(props) {
     super(props);
@@ -21,18 +23,14 @@ export default class Create extends Component {
     };
   }
 
-  // componentDidMount(){
-  //   this.sendSavedData();
-  // }
   sendData() {
-    console.log("sendding");
     this.sendSavedData();
     isOnline = true;
   }
   saveData() {
-    console.log("savingg");
     isOnline = false;
   }
+
   //onchange stores the specific data into state
   onChangeFirstname(e) {
     this.setState({
@@ -59,6 +57,8 @@ export default class Create extends Component {
       collegeName: e.target.value
     });
   }
+
+  //executes when internet is offline and sends the locally stored data into the end point when stores it in DB and once stored it removes it from local storage
   sendSavedData() {
     if (localStorage.getItem("data")) {
       console.log("calling");
@@ -83,11 +83,14 @@ export default class Create extends Component {
       city: this.state.city,
       collegeName: this.state.collegeName
     };
+
+    //if internet is On
     if (isOnline) {
       axios
         //stores the data into DB
         .post("https://syncserverapp.herokuapp.com/students", obj)
         .then(res => console.log(res.data));
+      //if internet is off
     } else {
       localStorage.setItem("data", JSON.stringify(obj));
     }

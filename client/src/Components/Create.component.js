@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import axios from "axios";
-
+import { Offline, Online, Detector } from "react-detect-offline";
+let isOnline = false;
 export default class Create extends Component {
   constructor(props) {
     super(props);
@@ -18,6 +19,19 @@ export default class Create extends Component {
       city: "",
       collegeName: ""
     };
+  }
+
+  // componentDidMount(){
+  //   this.sendSavedData();
+  // }
+  sendData() {
+    console.log("sendding");
+    this.sendSavedData();
+    isOnline = true;
+  }
+  saveData() {
+    console.log("savingg");
+    isOnline = false;
   }
   //onchange stores the specific data into state
   onChangeFirstname(e) {
@@ -45,6 +59,17 @@ export default class Create extends Component {
       collegeName: e.target.value
     });
   }
+  sendSavedData() {
+    if (localStorage.getItem("data")) {
+      console.log("calling");
+
+      axios
+        //stores the data into DB
+        .post("/students", JSON.parse(localStorage.getItem("data")))
+        .then(res => console.log(res.data));
+      localStorage.removeItem("data");
+    } else return;
+  }
 
   onSubmit(e) {
     e.preventDefault();
@@ -55,10 +80,14 @@ export default class Create extends Component {
       city: this.state.city,
       collegeName: this.state.collegeName
     };
-    axios
-      //stores the data into DB
-      .post("/students", obj)
-      .then(res => console.log(res.data));
+    if (isOnline) {
+      axios
+        //stores the data into DB
+        .post("/students", obj)
+        .then(res => console.log(res.data));
+    } else {
+      localStorage.setItem("data", JSON.stringify(obj));
+    }
 
     this.setState({
       firstname: "",
@@ -72,6 +101,14 @@ export default class Create extends Component {
   render() {
     return (
       <Fragment>
+        <Detector
+          render={({ online }) => (
+            <div className={online ? "normal" : "warning"}>
+              You are currently {online ? "online" : "offline"}
+              {online ? this.sendData() : this.saveData()}
+            </div>
+          )}
+        />
         <div style={{ marginTop: 10 }}>
           <h3>Add New Student</h3>
           <form onSubmit={this.onSubmit}>

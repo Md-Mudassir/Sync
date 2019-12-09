@@ -9,7 +9,7 @@ export default class Index extends Component {
   }
   componentDidMount() {
     axios
-      .get("/students")
+      .get("https://syncserverapp.herokuapp.com/students")
       .then(response => {
         this.setState({ Students: response.data });
       })

@@ -16,6 +16,7 @@ app.use(express.json({ extended: false }));
 const studentRoute = require("./routes/students");
 app.use("/students", studentRoute);
 
+
 app.use(express.static("client/build"));
 
 app.get("*", (req, res) => {

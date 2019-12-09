@@ -103,7 +103,7 @@ export default class Create extends Component {
       <Fragment>
         <Detector
           render={({ online }) => (
-            <div className={online ? "normal" : "warning"}>
+            <div className={online ? "bg-success" : "bg-warning"}>
               You are currently {online ? "online" : "offline"}
               {online ? this.sendData() : this.saveData()}
             </div>

@@ -26,3 +26,8 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
+
+### Screenshots
+![](https://github.com/Md-Mudassir/Sync/blob/master/client/public/ss.PNG)
+![](https://github.com/Md-Mudassir/Sync/blob/master/client/public/off.PNG)
+![](https://github.com/Md-Mudassir/Sync/blob/master/client/public/ss2.PNG)

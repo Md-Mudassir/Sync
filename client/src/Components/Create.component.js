@@ -69,7 +69,7 @@ export default class Create extends Component {
           "https://syncserverapp.herokuapp.com/students",
           JSON.parse(localStorage.getItem("data"))
         )
-        .then(res => console.log(res.data));
+        .then(res => console.log("Success"));
       localStorage.removeItem("data");
     } else return;
   }
@@ -89,7 +89,7 @@ export default class Create extends Component {
       axios
         //stores the data into DB
         .post("https://syncserverapp.herokuapp.com/students", obj)
-        .then(res => console.log(res.data));
+        .then(res => console.log("Success"));
       //if internet is off
     } else {
       localStorage.setItem("data", JSON.stringify(obj));

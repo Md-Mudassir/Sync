@@ -15,16 +15,7 @@ const StudentSchema = mongoose.Schema({
   city: {
     type: String
   },
-  contact: {
-    type: Number
-  },
   collegeName: {
-    type: String
-  },
-  class: {
-    type: String
-  },
-  course: {
     type: String
   }
 });

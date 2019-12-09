@@ -11,10 +11,7 @@ router.post("/", async (req, res) => {
     lastname: req.body.lastname,
     age: req.body.age,
     city: req.body.city,
-    contact: req.body.contact,
-    collegeName: req.body.collegeName,
-    class: req.body.class,
-    course: req.body.course
+    collegeName: req.body.collegeName
   });
   try {
     const studentSaved = await student.save();

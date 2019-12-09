@@ -57,7 +57,7 @@ export default class Create extends Component {
     };
     axios
       //stores the data into DB
-      .post("http://localhost:5000/students", obj)
+      .post("/students", obj)
       .then(res => console.log(res.data));
 
     this.setState({

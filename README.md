@@ -1,7 +1,7 @@
 # Sync - Offline React App
 
 ### Challenge: 
-Handling offline actions in react: when a user inputs details in a form and submits it when the internet is off, our app should persist the input details and when the internet is On the persisted data should automatically POST it into the specified end point.
+Handling offline actions in react: during offline mode when a user inputs details in a form and submits it our app should persist the input details and when the internet is On the persisted data should automatically POST it into the specified end point.
 
 ### Tech Stack
 1. MongoDB

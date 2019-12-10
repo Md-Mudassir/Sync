@@ -9,6 +9,8 @@ Handling offline actions in react: during offline mode when a user inputs detail
 3. ExpressJS
 4. ReactJS
 
+### [Live Preview](https://syncr.netlify.com/)
+
 ### [Watch Demo](https://youtu.be/F9V6T8zl8js)
 
 ### Usage
